@@ -1,0 +1,34 @@
+{
+  "name": "hyperapp-connect",
+  "description": "Connected components for Hyperapp.",
+  "version": "1.1.0",
+  "main": "dist/hyperapp-connect.js",
+  "module": "src/index.js",
+  "license": "MIT",
+  "repository": "etalisoft/hyperapp-connect",
+  "files": ["src", "dist"],
+  "author": "Jason Whitted <etalisoft@gmail.com>",
+  "keywords": ["hyperapp", "connect"],
+  "scripts": {
+    "test": "jest --coverage --no-cache",
+    "build": "npm run bundle && npm run minify",
+    "bundle": "rollup -i src/index.js -o dist/hyperapp-connect.js -m -f umd -n hyperappConnect",
+    "minify":
+      "uglifyjs dist/hyperapp-connect.js -o dist/hyperapp-connect.js -mc pure_funcs=Object.defineProperty --source-map includeSources,url=hyperapp-connect.js.map",
+    "prepare": "npm run build",
+    "format": "prettier --semi false --write {src,test}/**/*.js {,test/ts/}*.{ts,tsx}",
+    "release":
+      "npm run build && npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "babel": {
+    "presets": "env"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.2.0",
+    "prettier": "^1.10.2",
+    "rollup": "^0.55.3",
+    "typescript": "2.7.1",
+    "uglify-js": "3.3.9"
+  }
+}
