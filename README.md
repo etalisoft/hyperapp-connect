@@ -57,3 +57,28 @@ hoa(app)(state, actions, view, document.body);
 const ConnectedFooter = (props, children, state, actions) => <footer>{state.message}</footer>;
 const Footer = connect('example')(ConnectedFooter);
 ```
+
+## Complete Example
+```js
+import { h, app } from 'hyperapp';
+import { connect } from 'hyperapp-connect';
+
+const state = {
+  message: 'Hello!',
+};
+
+const actions = {
+  setMessage: message => state => ({ message }),
+};
+
+const ConnectedFooter = (props, children, state, actions) => <footer>{state.message}</footer>;
+const Footer = connect('example')(ConnectedFooter);
+const Section = (props, children) => <section><Footer /></section>;
+const Content = (props, children) => <div><Section /></div>;
+const Main = (props, children) => <main><Content /></main>;
+
+const view = (state, actions) => <Main />;
+
+const { hoa } = connect('example');
+hoa(app)(state, actions, view, document.body);
+```
