@@ -36,7 +36,7 @@ const view = (state, actions) => <Main />;
 app(state, actions, view, document.body);
 ```
 
-The `Footer` component would like to display the `state.message`, but it did not receive the value from it's parent. We _could_ update the `view` to pass the state down to `Main`, and then update `Main` to pass down the state to `Content`, and then update `Content` to pass down the state to `Footer`.  This prop chainging can be avoided with hyperapp-connect.
+The `Footer` component would like to display the `state.message`, but it did not receive the value from it's parent. We _could_ update the `view` to pass the state down to `Main`, and then update `Main` to pass down the state to `Content`, and then update `Content` to pass down the state to `Footer`.  This prop chaining can be avoided with hyperapp-connect.
 
 ## Usage
 **Step 1:** Import connect
